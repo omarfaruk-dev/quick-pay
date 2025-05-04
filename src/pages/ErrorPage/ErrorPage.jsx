@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useRouteError } from 'react-router';
-import NavBar from '../../components/Header/NavBar';
 import Button from '../../components/ui/Button';
 
 const ErrorPage = () => {
@@ -8,7 +7,6 @@ const ErrorPage = () => {
     const error = useRouteError();
     return (
         <div>
-            <NavBar />
             <title>404 Not Found</title>
             <div className="min-h-[calc(100vh-85px)] flex flex-col items-center justify-center bg-white px-4 py-12">
                 <img

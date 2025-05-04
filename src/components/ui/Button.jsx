@@ -5,7 +5,7 @@ const Button = ({ label, type, onClick }) => {
         <button
             type={type}
             onClick={onClick}
-            className="flex items-center justify-center px-4 py-2 text-base font-medium cursor-pointer whitespace-no-wrap bg-[#9FE870] border-2 border-transparent rounded-full shadow-sm hover:bg-[#80E142] hover:border-[#80E142] focus:outline-none">
+            className="flex items-center justify-center px-4 py-2 text-base font-medium cursor-pointer whitespace-no-wrap bg-yellow-400 text-indigo-900 border-2 border-transparent rounded-full shadow-sm hover:bg-yellow-300 hover:border-yellow-300 focus:outline-none">
             {label}
         </button>
     );
