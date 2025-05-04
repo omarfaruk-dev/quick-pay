@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "bill_type": "Electricity",
+        "icon": "https://i.ibb.co.com/KcqpbbfZ/nesco.jpg",
+        "organization": "NESCO",
+        "amount": 1745,
+        "due-date": "2025-04-25T06:57:58.110Z"
+    },
+    {
+        "id": 2,
+        "bill_type": "Gas",
+        "icon": "https://i.ibb.co.com/0V9GDyQ3/titas-gas.png",
+        "organization": "TITAS",
+        "amount": 1488,
+        "due-date": "2025-05-28T06:57:58.110Z"
+    },
+    {
+        "id": 3,
+        "bill_type": "Water",
+        "icon": "https://i.ibb.co.com/v6cNSVVB/wasa.jpg",
+        "organization": "WASA",
+        "amount": 720,
+        "due-date": "2025-05-10T06:57:58.110Z"
+    },
+    {
+        "id": 4,
+        "bill_type": "Internet",
+        "icon": "https://i.ibb.co.com/Rkq6HZjy/link3.png",
+        "organization": "LINk3",
+        "amount": 1250,
+        "due-date": "2025-04-10T06:57:58.110Z"
+    },
+    {
+        "id": 5,
+        "bill_type": "Tuition",
+        "icon": "https://i.ibb.co.com/6JvFTDC7/ah-college.jpg",
+        "organization": "BOGURA COLLEGE",
+        "amount": 6500,
+        "due-date": "2025-04-15T06:57:58.110Z"
+    },
+    {
+        "id": 6,
+        "bill_type": "Credit card",
+        "icon": "https://i.ibb.co.com/fzx0HRsy/credit-card.jpg",
+        "organization": "ISLAMI BANK",
+        "amount": 3400,
+        "due-date": "2025-04-20T06:57:58.110Z"
+    },
+    {
+        "id": 7,
+        "bill_type": "Satellite tv",
+        "icon": "https://i.ibb.co.com/KcqpbbfZ/nesco.jpg",
+        "organization": "AKASH",
+        "amount": 950,
+        "due-date": "2025-04-30T06:57:58.110Z"
+    }
+]
