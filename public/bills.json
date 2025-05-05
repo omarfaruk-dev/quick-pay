@@ -41,7 +41,7 @@
     },
     {
         "id": 6,
-        "bill_type": "Credit card",
+        "bill_type": "CreditCard",
         "icon": "https://i.ibb.co.com/fzx0HRsy/credit-card.jpg",
         "organization": "ISLAMI BANK",
         "amount": 3400,
@@ -49,8 +49,8 @@
     },
     {
         "id": 7,
-        "bill_type": "Satellite tv",
-        "icon": "https://i.ibb.co.com/KcqpbbfZ/nesco.jpg",
+        "bill_type": "SatelliteTv",
+        "icon": "https://i.ibb.co.com/zh7Pyfc1/akash.jpg",
         "organization": "AKASH",
         "amount": 950,
         "due-date": "2025-04-30T06:57:58.110Z"
