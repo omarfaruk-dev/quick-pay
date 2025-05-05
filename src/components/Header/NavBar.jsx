@@ -1,5 +1,5 @@
 import { use, useEffect, useRef, useState } from 'react';
-import { FaBars, FaBookReader, FaHistory, FaHome, FaMoneyBillWave, FaTimes, FaUser } from 'react-icons/fa';
+import { FaBars, FaBookReader, FaHome, FaMoneyBillWave, FaTimes, FaUser } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router';
 import Button from '../ui/Button';
 import { AuthContext } from '../../contexts/AuthContext';
