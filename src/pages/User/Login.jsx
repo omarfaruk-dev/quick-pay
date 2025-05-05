@@ -29,7 +29,7 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 alert('success')
-                navigate(location?.state || '/')
+                navigate(`${location.state ? location.state : '/'}`)
                 
             })
             .catch(error => {

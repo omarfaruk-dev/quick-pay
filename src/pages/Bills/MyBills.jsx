@@ -1,8 +1,6 @@
 import React from 'react';
-import { FaBolt, FaRegCreditCard, FaUniversity, FaWifi } from 'react-icons/fa';
-import { GiGasStove } from 'react-icons/gi';
+import { FaBolt, FaFire, FaRegCreditCard, FaTv, FaUniversity, FaWifi } from 'react-icons/fa';
 import { IoWater } from 'react-icons/io5';
-import { MdLiveTv } from 'react-icons/md';
 import { Link, useLoaderData } from 'react-router';
 
 const formatDate = (isoDate) => {
@@ -19,7 +17,7 @@ const getBillIcon = (type) => {
     } else if (lowerType === 'water') {
         return <IoWater className="text-blue-500 text-xl" />;
     } else if (lowerType === 'gas') {
-        return <GiGasStove className="text-red-500 text-xl" />;
+        return <FaFire  className="text-red-500 text-xl" />;
     } else if (lowerType === 'tuition') {
         return <FaUniversity className="text-green-600 text-xl" />;
     } else if (lowerType === 'internet') {
@@ -27,7 +25,7 @@ const getBillIcon = (type) => {
     } else if (lowerType === 'creditcard') {
         return <FaRegCreditCard  className="text-green-500 text-xl"/>;
     } else if (lowerType === 'satellitetv') {
-        return <MdLiveTv  className="text-blue-400 text-xl"/>;
+        return <FaTv  className="text-blue-400 text-xl"/>;
     }
     
     else {
@@ -52,7 +50,7 @@ const MyBills = () => {
                             <div className="flex flex-col md:flex-row items-center gap-4">
                                 <div className="relative bg-blue-100 p-1 rounded-lg">
                                     <img src={bill.icon} alt={bill.bill_type} className="w-40 h-40 object-contain rounded-lg shadow" />
-                                    <div className="absolute bottom-3 right-3 bg-white p-1 rounded-lg shadow-md">
+                                    <div className="absolute bottom-1 right-1 bg-blue-100 p-2 rounded-lg ">
                                         {getBillIcon(bill.bill_type)}
                                     </div>
                                 </div>

@@ -10,8 +10,7 @@ const AuthProvider = ({ children }) => {
 
     //share currentUser info
     const [user, setUser]=useState(null)
-
-    //loading 
+    //loading on state change
     const [loading, setLoading] = useState(true)
 
     const createUser = (email, password) => {

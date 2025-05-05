@@ -7,6 +7,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from "../pages/User/Login";
 import Register from "../pages/User/Register";
 import BillDetails from "../pages/Bills/BillDetails";
+import PrivateRoute from "./PrivateRoute";
+import Loading from "../components/ui/Loading";
 
 
 const router = createBrowserRouter([
@@ -20,8 +22,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/bills',
+                hydrateFallbackElement: <Loading />,
                 loader: () => fetch('./bills.json'),
-                Component: Bills,
+                element: <PrivateRoute> <Bills /></PrivateRoute>
             },
             {
                 path: '/bills/:id',
@@ -30,10 +33,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/profile',
-                Component: Profile
+                hydrateFallbackElement: <Loading />,
+                element: <PrivateRoute> <Profile /> </PrivateRoute>
             },
             {
                 path: '/login',
+                hydrateFallbackElement: <Loading />,
                 Component: Login
             },
             {
