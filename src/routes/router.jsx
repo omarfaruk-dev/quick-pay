@@ -23,12 +23,12 @@ const router = createBrowserRouter([
             {
                 path: '/bills',
                 hydrateFallbackElement: <Loading />,
-                loader: () => fetch('./bills.json'),
+                loader: () => fetch('../bills.json'),
                 element: <PrivateRoute> <Bills /></PrivateRoute>
             },
             {
                 path: '/bills/:id',
-                loader: () => fetch('./bills.json'),
+                loader: () => fetch('../bills.json'),
                 Component: BillDetails,
             },
             {

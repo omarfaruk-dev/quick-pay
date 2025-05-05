@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 const Login = () => {
 
      //from auth context
-     const { signInUser, googleSignIn } = use(AuthContext)
+     const { signInUser, googleSignIn, setUser } = use(AuthContext)
      //use location for path
      const location = useLocation();
      //navigate / redirect to another page
@@ -28,6 +28,8 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result);
+                const currentUser=result.user;
+                setUser(currentUser)
                 alert('success')
                 navigate(`${location.state ? location.state : '/'}`)
                 
@@ -41,7 +43,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(result => {
-                console.log(result.user);
+                setUser(result.user);
                 navigate('/')
                 alert('successfully login with google')
             })

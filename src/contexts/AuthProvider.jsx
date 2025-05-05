@@ -8,6 +8,9 @@ const googleProvider = new GoogleAuthProvider
 
 const AuthProvider = ({ children }) => {
 
+    const [balance, setBalance] = useState(10000); // Initial balance (চাইলে database থেকে load করতে পারো)
+    const [paidBills, setPaidBills] = useState([]); // Paid bill id list
+
     //share currentUser info
     const [user, setUser]=useState(null)
     //loading on state change
@@ -44,9 +47,14 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         signInUser,
+        setUser,
         googleSignIn,
         updateUser,
         signOutUser,
+        balance,
+        setBalance,
+        paidBills,
+        setPaidBills,
     }
 
     //auth state change, if user login or logout

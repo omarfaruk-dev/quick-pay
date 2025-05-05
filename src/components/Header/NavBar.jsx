@@ -5,7 +5,7 @@ import Button from '../ui/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const NavBar = () => {
-    const { user, signOutUser } = use(AuthContext);
+    const { user, signOutUser, balance } = use(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const navigate = useNavigate();
@@ -83,12 +83,7 @@ const NavBar = () => {
                                         >
                                             {user?.displayName}
                                         </Link>
-                                        <a
-
-                                            className="text-base block px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
-                                        >
-                                            Balance : 10000
-                                        </a>
+                                        <p className="text-base block px-4 text-blue-800">Balance: <span className="font-bold text-green-600">{balance}</span></p>
                                         <button onClick={handleSignOut}
                                             className="text-base w-full text-left px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
                                         >

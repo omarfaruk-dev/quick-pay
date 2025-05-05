@@ -36,7 +36,6 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(result);
                 alert('Registration Succuss!')
                 navigate('/')
                 updateUser({ displayName: name, photoURL: photo }).then(() => {
