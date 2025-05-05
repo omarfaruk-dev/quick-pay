@@ -11,7 +11,7 @@ const NavBar = () => {
         <>
             <li><NavLink to='/' className="text-lg hover:text-yellow-300 transition flex items-center"><FaHome className="mr-2" /> Home</NavLink></li>
             <li><NavLink to='/bills' className="text-lg hover:text-yellow-300 transition flex items-center" ><FaMoneyBillWave className="mr-2" /> Bills</NavLink></li>
-            <li><NavLink to='/history' className="text-lg hover:text-yellow-300 transition flex items-center"><FaUser className="mr-2" />My Profile</NavLink></li>
+            <li><NavLink to='/profile' className="text-lg hover:text-yellow-300 transition flex items-center"><FaUser className="mr-2" />My Profile</NavLink></li>
             <li><NavLink to='/blog' className="text-lg hover:text-yellow-300 transition flex items-center" ><FaBookReader className='mr-2' /> Blog</NavLink></li>
         </>
 

@@ -10,12 +10,12 @@ const BillDetails = () => {
     const { id } = useParams();
     const bills = useLoaderData(); // get all bills from loader
     const bill = bills.find(b => b.id === parseInt(id));
-    console.log(id, bill);
+    // console.log(id, bill);
     if (!bill) {
         return <p className="text-center text-red-500">Bill not found.</p>;
     }
 
-    const formattedDate = new Date(bill['due-date']).toLocaleDateString('en-GB', {
+    const formattedDate = new Date(bill['due-date']).toLocaleDateString('en-US', {
         day: '2-digit',
         month: 'long',
         year: 'numeric',

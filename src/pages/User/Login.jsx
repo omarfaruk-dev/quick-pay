@@ -1,19 +1,60 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Login = () => {
+
+     //from auth context
+     const { signInUser, googleSignIn } = use(AuthContext)
+     //use location for path
+     const location = useLocation();
+     //navigate / redirect to another page
+     const navigate = useNavigate()
+
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)
     };
 
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        //signin user
+        signInUser(email, password)
+            .then(result => {
+                console.log(result);
+                alert('success')
+                navigate(location?.state || '/')
+                
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then(result => {
+                console.log(result.user);
+                alert('successfully login with google')
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center px-4">
             <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-8">
                 <h2 className=" text-2xl font-bold text-blue-800 mb-6 text-center">Login to Quick Pay</h2>
-                <form className="space-y-5">
+                <form onSubmit={handleLogin}
+                className="space-y-5">
                     {/* Email */}
                     <div>
                         <label className="block text-sm font-medium text-blue-800 mb-1">Email</label>
@@ -62,7 +103,7 @@ const Login = () => {
                     </div>
                     {/* login with google */}
                     <div className="flex justify-center my-4">
-                        <button type="button" className="flex items-center justify-center w-full py-2 space-x-4 border-2 border-blue-700 bg-white rounded-3xl focus:ring-2 focus:ring-offset-1 focus:ring-purple-700 cursor-pointer">
+                        <button onClick={handleGoogleLogin} type="button" className="flex items-center justify-center w-full py-2 space-x-4 border-2 border-blue-700 bg-white rounded-3xl focus:ring-2 focus:ring-offset-1 focus:ring-purple-700 cursor-pointer">
                             <FcGoogle />
                             <p> Login with Google</p>
                         </button>

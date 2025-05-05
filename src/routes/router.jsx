@@ -20,12 +20,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/bills',
-                loader: () => fetch('bills.json'),
+                loader: () => fetch('./bills.json'),
                 Component: Bills,
             },
             {
                 path: '/bills/:id',
-                loader: () => fetch('bills.json'),
+                loader: () => fetch('./bills.json'),
                 Component: BillDetails,
             },
             {

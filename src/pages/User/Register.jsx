@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+// import { auth } from '../../firebase/firebase.init';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Register = () => {
+
+    const {createUser} = use(AuthContext);
+    const navigate = useNavigate();
+
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -20,6 +27,21 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password);
+
+        createUser(email, password)
+        .then(result =>{
+            console.log(result);
+            alert('Registration Succuss!')
+            navigate('/')
+
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+
 
     }
 
