@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const Register = () => {
 
-    const {createUser} = use(AuthContext);
+    const { createUser, setUser, updateUser } = use(AuthContext);
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -27,20 +27,30 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
 
         createUser(email, password)
-        .then(result =>{
-            console.log(result);
-            alert('Registration Succuss!')
-            navigate('/')
+            .then(result => {
+                const user = result.user;
+                console.log(result);
+                alert('Registration Succuss!')
+                navigate('/')
+                updateUser({ displayName: name, photoURL: photo }).then(() => {
+                    setUser({ ...user, displayName: name, photoURL: photo })
+                })
+                    .catch(error => {
+                        alert(error);
+                        setUser(user);
+                    })
 
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+            })
+            .catch(error => {
+                console.log(error);
+            })
 
 
     }

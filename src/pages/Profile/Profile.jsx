@@ -10,7 +10,7 @@ const Profile = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
                 <div className="flex flex-col items-center">
                     <img
-                        src={user.photoURL}
+                        src={user?.photoURL}
                         alt="Profile"
                         className="w-20 h-20 rounded-full border-4 border-blue-700 shadow-md mb-4"
                     />

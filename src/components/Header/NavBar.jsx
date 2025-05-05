@@ -1,11 +1,41 @@
-import { useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import { FaBars, FaBookReader, FaHistory, FaHome, FaMoneyBillWave, FaTimes, FaUser } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import Button from '../ui/Button';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const NavBar = () => {
+    const { user, signOutUser } = use(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const navigate = useNavigate();
+
+    // user menu
+    const [open, setOpen] = useState(false);
+    const menuRef = useRef();
+
+    //user menu close on outside click
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    //signout user
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                navigate('/')
+                alert('Log Out Successfully!')
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     const links =
         <>
@@ -29,11 +59,59 @@ const NavBar = () => {
                         {links}
                     </ul>
 
+                    {
+                        user ?
+                            <div className="relative inline-block text-left ref={menuRef}">
+                                {/* Profile Image Button */}
+                                <button
+                                    onClick={() => setOpen(!open)}
+                                    className="focus:outline-none"
+                                >
+                                    <img
+                                        src={user?.photoURL}
+                                        alt="User"
+                                        className="w-12 h-12 rounded-full border-2 border-blue-700 shadow-sm"
+                                    />
+                                </button>
+
+                                {/* User Dropdown Menu */}
+                                {open && (
+                                    <div className="absolute right-0 mt-2 w-44 bg-white border rounded-xl shadow-lg z-50 text-sm py-2">
+                                        <Link
+                                            to="/profile"
+                                            className="text-base block px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
+                                        >
+                                            {user?.displayName}
+                                        </Link>
+                                        <a
+
+                                            className="text-base block px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
+                                        >
+                                            Balance : 10000
+                                        </a>
+                                        <button onClick={handleSignOut}
+                                            className="text-base w-full text-left px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                            :
+                            <div className="hidden md:flex space-x-3">
+                                <Link to="/register"><Button label={"Register"}></Button></Link>
+                                <Link to='/login'><Button label={"Login"}></Button></Link>
+                            </div>
+
+
+                    }
+
                     {/* Right Side Buttons */}
-                    <div className="hidden md:flex space-x-3">
-                        <Link to="/register"><Button label={"Register"}></Button></Link>
-                        <Link to='/login'><Button label={"Login"}></Button></Link>
-                    </div>
+
+
+                    {/* user menu */}
+
+
 
                     {/* Mobile menu button */}
                     <div className="md:hidden">
@@ -42,6 +120,8 @@ const NavBar = () => {
                         </button>
                     </div>
                 </div>
+
+
             </div>
 
             {/* Mobile Menu */}

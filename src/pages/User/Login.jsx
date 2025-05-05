@@ -42,6 +42,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 console.log(result.user);
+                navigate('/')
                 alert('successfully login with google')
             })
             .catch(error => {
