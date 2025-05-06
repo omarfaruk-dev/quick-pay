@@ -68,11 +68,17 @@ const NavBar = () => {
                                     onClick={() => setOpen(!open)}
                                     className="focus:outline-none"
                                 >
-                                    <img
-                                        src={user?.photoURL}
-                                        alt="User"
-                                        className="w-12 h-12 rounded-full border-2 border-blue-700 shadow-sm"
-                                    />
+                                    {user?.photoURL ? (
+                                        <img
+                                            src={user.photoURL}
+                                            alt="User"
+                                            className="w-12 h-12 rounded-full border-2 border-blue-700 shadow-sm"
+                                        />
+                                    ) : (
+                                        <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-blue-700 shadow-sm bg-gray-100 text-blue-700">
+                                            <FaUser className="text-xl" />
+                                        </div>
+                                    )}
                                 </button>
 
                                 {/* User Dropdown Menu */}

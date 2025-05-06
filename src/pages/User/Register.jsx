@@ -45,6 +45,7 @@ const Register = () => {
                 })
                     .catch(error => {
                         setUser(user);
+                        console.log(error);
                     })
 
             })
