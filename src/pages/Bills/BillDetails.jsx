@@ -89,12 +89,12 @@ const BillDetails = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 min-h-[calc(100vh-361px)] flex items-center justify-center px-4 py-8 bg-white">
+    <div className="max-w-7xl mx-auto sm:px-4 lg:px-6 min-h-[calc(100vh-361px)] flex items-center justify-center px-2 py-8 bg-white">
       <title>Bill Payment | Details</title>
       <div className="md:flex  items-center bg-white rounded-xl shadow-lg max-w-3xl w-xl overflow-hidden border border-blue-100">
         {/* Left side - Icon */}
         <div className="relative bg-white flex items-center justify-center p-4">
-          <img src={bill.icon} alt={`${bill.bill_type} icon`} className="w-50 lg:w-60 lg:h-60 border-2 border-blue-700 rounded-xl object-contain" />
+          <img src={bill.icon} alt={`${bill.bill_type} icon`} className="w-50 lg:w-60 lg:h-60 border-2 border-blue-100 rounded-xl object-contain" />
           <div className="absolute bottom-5 right-5 bg-blue-100 p-2 rounded-lg ">
             {getBillIcon(bill.bill_type)}
           </div>

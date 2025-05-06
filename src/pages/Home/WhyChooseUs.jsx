@@ -26,9 +26,9 @@ const benefits = [
 
 const WhyChooseUs = () => {
   return (
-    <div className="bg-gradient-to-br from-[#fdfdfd] via-[#f9f9fb] to-[#f1f5f9] py-16 px-6 md:px-12">
+    <div className=" bg-gradient-to-br from-[#fdfdfd] via-[#f9f9fb] to-[#f1f5f9] py-16 px-6 md:px-12">
       <h2 className="text-xl lg:text-3xl font-bold text-center text-gray-800 mb-12">Why Choose Us</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {benefits.map((benefit, index) => (
           <div
             key={index}

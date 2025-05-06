@@ -42,7 +42,7 @@ const MyBills = () => {
         : bills.filter(bill => bill.bill_type.toLowerCase() === selectedType.toLowerCase());
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 flex items-center justify-center">
             <title>My Bills | All Bills List</title>
             <div className="w-full p-8">
                 <h2 className="text-2xl font-bold text-blue-800 mb-6 text-center">My Bills</h2>
@@ -50,7 +50,7 @@ const MyBills = () => {
                 {/* Dropdown Filter */}
                 <div className="flex justify-center mb-8">
                     <select
-                        className="border-2 border-blue-700 rounded-md px-4 py-2 text-blue-700 font-medium focus:outline-none"
+                        className="border-2 border-blue-100 rounded-md px-4 py-2 text-blue-700 font-medium focus:outline-none"
                         value={selectedType}
                         onChange={(e) => setSelectedType(e.target.value)}
                     >
@@ -70,7 +70,7 @@ const MyBills = () => {
                             return (
                                 <div
                                     key={bill.id}
-                                    className="relative flex flex-col md:flex-row items-center justify-between space-y-2 p-4 rounded-xl shadow-md border border-blue-700"
+                                    className="relative flex flex-col md:flex-row items-center justify-between space-y-2 p-4 rounded-xl shadow-md border-2 border-blue-100"
                                 >
                                     {/* Blue check if paid */}
                                     {isPaid && (

@@ -52,7 +52,7 @@ const Profile = () => {
     });
 
     return (
-        <div className="min-h-[calc(100vh-361px)]  flex items-center justify-center px-4 bg-gradient-to-r from-blue-50 to-indigo-100">
+        <div className="min-h-[calc(100vh-361px)]  flex items-center justify-center py-4 px-4 bg-gradient-to-r from-blue-50 to-indigo-100">
             <title>{user?.displayName} | My Profile Details</title>
             <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
                 <div className="flex flex-col items-center">

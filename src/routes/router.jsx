@@ -10,6 +10,8 @@ import BillDetails from "../pages/Bills/BillDetails";
 import PrivateRoute from "./PrivateRoute";
 import Loading from "../components/ui/Loading";
 import ResetPassword from "../pages/User/ResetPassword";
+import Blog from "../pages/Blog/Blog";
+import BlogDetails from "../pages/Blog/BlogDetails";
 
 
 const router = createBrowserRouter([
@@ -51,6 +53,16 @@ const router = createBrowserRouter([
                 path: '/reset-password',
                 // hydrateFallbackElement: <Loading></Loading>,
                 Component: ResetPassword
+            },
+            {
+                path: '/blog',
+                loader: ()=> fetch('../blogs.json'),
+                Component: Blog
+            },
+            {
+                path: '/blog/:id',
+                loader: ()=> fetch('../blogs.json'),
+                Component: BlogDetails
             },
             {
                 path: '/*',

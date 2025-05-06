@@ -44,7 +44,7 @@ const ServiceCarousel = () => {
             >
                 {services.map((service, index) => (
                     <SwiperSlide key={index}>
-                        <div className="flex flex-col items-center justify-center h-full">
+                        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center h-full">
                             <div className="mb-3">{service.icon}</div>
                             <p className="text-sm text-gray-800 font-medium">{service.name}</p>
                         </div>
