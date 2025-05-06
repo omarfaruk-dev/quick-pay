@@ -1,0 +1,66 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
+
+const images = [
+    'https://i.ibb.co.com/KcqpbbfZ/nesco.jpg',
+    'https://i.ibb.co.com/0V9GDyQ3/titas-gas.png',
+    'https://i.ibb.co.com/v6cNSVVB/wasa.jpg',
+    'https://i.ibb.co.com/Rkq6HZjy/link3.png',
+    'https://i.ibb.co.com/6JvFTDC7/ah-college.jpg',
+    'https://i.ibb.co.com/fzx0HRsy/credit-card.jpg',
+    'https://i.ibb.co.com/zh7Pyfc1/akash.jpg'
+];
+
+const HeaderSlider = () => {
+    return (
+
+        <div className="mt-10 w-full mx-auto py-12 md:px-20 bg-gradient-to-b from-blue-700 via-indigo-600 to-purple-700">
+            {/* <h2 className="text-white text-3xl md:text-4xl text-center mb-6 md:mb-10 font-semibold">
+                Our Popular Subscriptions
+            </h2> */}
+
+            <Swiper
+                effect="coverflow"
+                grabCursor={true}
+                centeredSlides={true}
+                loop={true}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                slidesPerView="auto"
+                coverflowEffect={{
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 120,
+                    modifier: 2.5,
+                    slideShadows: false,
+                }}
+                pagination={{ clickable: true }}
+                navigation={true}
+                modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+                className="swiper_container"
+            >
+                {images.map((img, index) => (
+                    <SwiperSlide
+                        key={index}
+                        className="max-w-xs rounded-2xl overflow-hidden shadow-lg"
+                    >
+                        <img
+                            src={img}
+                            alt={`slide-${index}`}
+                            className="w-60 md:w-full mx-auto h-60 md:h-auto object-center rounded-2xl"
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
+    );
+};
+
+export default HeaderSlider;
