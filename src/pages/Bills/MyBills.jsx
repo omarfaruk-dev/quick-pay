@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { FaBolt, FaFire, FaRegCreditCard, FaTv, FaUniversity, FaWifi } from 'react-icons/fa';
+import React, { useState, useContext, useEffect } from 'react';
+import { FaBolt, FaFire, FaRegCreditCard, FaTv, FaUniversity, FaWifi, FaCheckCircle } from 'react-icons/fa';
 import { IoWater } from 'react-icons/io5';
 import { Link, useLoaderData } from 'react-router';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const formatDate = (isoDate) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -25,16 +26,23 @@ const billTypes = ['All Bills', 'Electricity', 'Gas', 'Water', 'Internet', 'Tuit
 
 const MyBills = () => {
     const bills = useLoaderData();
-
-    // Filter state
+    const { user } = useContext(AuthContext);
     const [selectedType, setSelectedType] = useState('All Bills');
+    const [paidBills, setPaidBills] = useState([]);
+
+    useEffect(() => {
+        if (user) {
+            const stored = JSON.parse(localStorage.getItem(`paidBills_${user.uid}`)) || [];
+            setPaidBills(stored);
+        }
+    }, [user]);
 
     const filteredBills = selectedType === 'All Bills'
         ? bills
         : bills.filter(bill => bill.bill_type.toLowerCase() === selectedType.toLowerCase());
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
             <div className="w-full p-8">
                 <h2 className="text-2xl font-bold text-blue-800 mb-6 text-center">My Bills</h2>
 
@@ -56,38 +64,49 @@ const MyBills = () => {
                     {filteredBills.length === 0 ? (
                         <p className="text-center text-red-500">No bills found for selected type.</p>
                     ) : (
-                        filteredBills.map(bill => (
-                            <div
-                                key={bill.id}
-                                className="flex flex-col md:flex-row items-center justify-between space-y-2 p-4 rounded-xl shadow-md border border-blue-700"
-                            >
-                                <div className="flex flex-col md:flex-row items-center gap-4">
-                                    <div className="relative bg-blue-100 p-1 rounded-lg">
-                                        <img src={bill.icon} alt={bill.bill_type} className="w-40 h-40 object-contain rounded-lg shadow" />
-                                        <div className="absolute -bottom-2 -right-2 bg-blue-100 p-2 rounded-lg">
-                                            {getBillIcon(bill.bill_type)}
+                        filteredBills.map(bill => {
+                            const isPaid = paidBills.includes(bill.id);
+                            return (
+                                <div
+                                    key={bill.id}
+                                    className="relative flex flex-col md:flex-row items-center justify-between space-y-2 p-4 rounded-xl shadow-md border border-blue-700"
+                                >
+                                    {/* Blue check if paid */}
+                                    {isPaid && (
+                                        <FaCheckCircle
+                                            className="absolute top-2 right-2 text-blue-500 text-xl"
+                                            title="Bill Paid"
+                                        />
+                                    )}
+
+                                    <div className="flex flex-col md:flex-row items-center gap-4">
+                                        <div className="relative bg-blue-100 p-1 rounded-lg">
+                                            <img src={bill.icon} alt={bill.bill_type} className="w-40 h-40 object-contain rounded-lg shadow" />
+                                            <div className="absolute -bottom-2 -right-2 bg-blue-100 p-2 rounded-lg">
+                                                {getBillIcon(bill.bill_type)}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-xl text-blue-900">{bill.organization}</h3>
+                                            <p className="text-base text-blue-600 italic">{bill.bill_type}</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <h3 className="font-semibold text-xl text-blue-900">{bill.organization}</h3>
-                                        <p className="text-base text-blue-600 italic">{bill.bill_type}</p>
+                                    <div className="text-right text-sm">
+                                        <p className="text-blue-800 text-base">
+                                            <span className="font-medium">Amount:</span> {bill.amount}
+                                        </p>
+                                        <p className="text-blue-800 text-base">
+                                            <span className="font-medium">Due:</span> {formatDate(bill["due-date"])}
+                                        </p>
                                     </div>
+                                    <Link to={`/bills/${bill.id}`}>
+                                        <button className="ml-4 text-lg bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-2 rounded-3xl font-medium transition">
+                                            Pay Bill
+                                        </button>
+                                    </Link>
                                 </div>
-                                <div className="text-right text-sm">
-                                    <p className="text-blue-800 text-base">
-                                        <span className="font-medium">Amount:</span> {bill.amount}
-                                    </p>
-                                    <p className="text-blue-800 text-base">
-                                        <span className="font-medium">Due:</span> {formatDate(bill["due-date"])}
-                                    </p>
-                                </div>
-                                <Link to={`/bills/${bill.id}`}>
-                                    <button className="ml-4 text-lg bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-2 rounded-3xl font-medium transition">
-                                        Pay Bill
-                                    </button>
-                                </Link>
-                            </div>
-                        ))
+                            );
+                        })
                     )}
                 </div>
             </div>
