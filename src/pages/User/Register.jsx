@@ -9,7 +9,7 @@ import { FcGoogle } from 'react-icons/fc';
 const Register = () => {
     const location = useLocation()
 
-    const { createUser, setUser, updateUser, googleSignIn } = use(AuthContext);
+    const {user, createUser, setUser, updateUser, googleSignIn } = use(AuthContext);
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -63,9 +63,12 @@ const Register = () => {
                 console.log(error);
             })
     }
+    if(user) {
+        return navigate('/')
+    }
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-r from-blue-50 to-indigo-100">
             <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-8">
                 <h2 className="text-2xl font-bold text-blue-800 mb-6 text-center">Register for Quick Pay</h2>
                 <form onSubmit={handleSubmit} className="space-y-5">

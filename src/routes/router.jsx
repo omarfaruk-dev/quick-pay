@@ -9,6 +9,7 @@ import Register from "../pages/User/Register";
 import BillDetails from "../pages/Bills/BillDetails";
 import PrivateRoute from "./PrivateRoute";
 import Loading from "../components/ui/Loading";
+import ResetPassword from "../pages/User/ResetPassword";
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
                 path: '/register',
                 // hydrateFallbackElement: <Loading></Loading>,
                 Component: Register
+            },
+            {
+                path: '/reset-password',
+                // hydrateFallbackElement: <Loading></Loading>,
+                Component: ResetPassword
             },
             {
                 path: '/*',

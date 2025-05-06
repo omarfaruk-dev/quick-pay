@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 
 const googleProvider = new GoogleAuthProvider
@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const [paidBills, setPaidBills] = useState([]); // Paid bill id list
 
     //share currentUser info
-    const [user, setUser]=useState(null)
+    const [user, setUser] = useState(null)
     //loading on state change
     const [loading, setLoading] = useState(true)
 
@@ -21,13 +21,13 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const signInUser = (email, password)=>{
+    const signInUser = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     //sign in with google
-    const googleSignIn = ()=>{
+    const googleSignIn = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
@@ -36,10 +36,16 @@ const AuthProvider = ({ children }) => {
         updateProfile(auth.currentUser, updatedData)
     }
 
-    const signOutUser = ()=>{
+    const signOutUser = () => {
         setLoading(true)
         return signOut(auth)
     }
+
+    // Reset password
+    const resetPassword = (email) => {
+        setLoading(true);
+        return sendPasswordResetEmail(auth, email);
+    };
 
 
     const userInfo = {
@@ -55,19 +61,21 @@ const AuthProvider = ({ children }) => {
         setBalance,
         paidBills,
         setPaidBills,
+        resetPassword,
+
     }
 
     //auth state change, if user login or logout
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) =>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log(currentUser);
             setUser(currentUser);
             setLoading(false) // stop loading
         })
-        return ()=>{
+        return () => {
             unSubscribe();
         }
-    },[])
+    }, [])
 
     return (
         <AuthContext value={userInfo}>

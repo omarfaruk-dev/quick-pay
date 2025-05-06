@@ -1,8 +1,9 @@
 import { use, useEffect, useRef, useState } from 'react';
-import { FaBars, FaBookReader, FaHome, FaMoneyBillWave, FaTimes, FaUser } from 'react-icons/fa';
+import { FaBars, FaBookReader, FaDollarSign, FaHome, FaMoneyBillWave, FaSignOutAlt, FaTimes, FaUser } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router';
 import Button from '../ui/Button';
 import { AuthContext } from '../../contexts/AuthContext';
+import { TbCoinTaka } from 'react-icons/tb';
 
 const NavBar = () => {
     const { user, signOutUser, balance } = use(AuthContext);
@@ -61,7 +62,7 @@ const NavBar = () => {
 
                     {
                         user ?
-                            <div className="relative inline-block text-left ref={menuRef}">
+                            <div ref={menuRef} className="hidden relative md:inline-block text-left">
                                 {/* Profile Image Button */}
                                 <button
                                     onClick={() => setOpen(!open)}
@@ -76,18 +77,18 @@ const NavBar = () => {
 
                                 {/* User Dropdown Menu */}
                                 {open && (
-                                    <div className="absolute right-0 mt-2 w-44 bg-white border rounded-xl shadow-lg z-50 text-sm py-2">
-                                        <Link
+                                    <div className="absolute right-0 mt-1 w-44 bg-gradient-to-b from-blue-700 to-purple-700 border rounded-xl shadow-lg z-50 text-sm py-2">
+                                        <Link onClick={() => setOpen(false)}
                                             to="/profile"
-                                            className="text-base block px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
+                                            className="text-lg font-bold block px-4 py-2 text-white hover:text-yellow-400"
                                         >
                                             {user?.displayName}
                                         </Link>
-                                        <p className="text-base block px-4 text-blue-800">Balance: <span className="font-bold text-green-600">{balance}</span></p>
+                                        <p className="text-lg px-4 text-white flex items-center gap-2">Balance: <span className="font-bold text-white flex items-center gap-1">{balance} <TbCoinTaka size={25} /></span></p>
                                         <button onClick={handleSignOut}
-                                            className="text-base w-full text-left px-4 py-2 text-blue-800 hover:bg-blue-50 hover:text-purple-700"
+                                            className="text-lg cursor-pointer flex items-center gap-2 text-left px-4 py-2 text-white hover:text-yellow-400"
                                         >
-                                            Logout
+                                            Logout <FaSignOutAlt />
                                         </button>
                                     </div>
                                 )}
@@ -101,13 +102,6 @@ const NavBar = () => {
 
                     }
 
-                    {/* Right Side Buttons */}
-
-
-                    {/* user menu */}
-
-
-
                     {/* Mobile menu button */}
                     <div className="md:hidden">
                         <button onClick={toggleMenu} className="text-white focus:outline-none">
@@ -115,18 +109,33 @@ const NavBar = () => {
                         </button>
                     </div>
                 </div>
-
-
             </div>
 
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <ul className="md:hidden px-4 pb-4 pt-2 space-y-2 bg-gradient-to-b from-blue-700 to-purple-700">
                     {links}
-                    <div className="pt-2 space-y-2">
-                        <Button to="/register" label={"Register"}></Button>
-                        <Link to='/login'><Button label={"Login"}></Button></Link>
-                    </div>
+                    {
+                        user ?
+                            <div className="border-t mt-5 pt-2">
+                                <h3
+                                    className="flex items-center gap-2 text-lg py-2 text-white hover:bg-blue-50"
+                                >   {user ? <img src={user?.photoURL} className='w-10 h-10 rounded-full border-2 border-white' /> : <FaUser />}
+                                    {user?.displayName}
+                                </h3>
+                                <h3 className="text-lg text-white flex items-center justify-left gap-2"><TbCoinTaka size={25} /> Balance: <span className="font-bold text-yellow-400"> {balance} BDT</span></h3>
+                                <button onClick={handleSignOut}
+                                    className="flex items-center gap-2 text-lg w-full py-3 text-white"
+                                > <FaSignOutAlt />
+                                    Logout
+                                </button>
+                            </div>
+                            :
+                            <div className="pt-2 space-y-2">
+                                <Button to="/register" label={"Register"}></Button>
+                                <Link to='/login'><Button label={"Login"}></Button></Link>
+                            </div>
+                    }
                 </ul>
             )}
         </nav>

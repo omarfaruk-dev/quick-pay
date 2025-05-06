@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceCarousel from './ServiceCarousel';
 import WhyChooseUs from './WhyChooseUs';
 import MultiPlatformSupport from './MultiPlatformSupport';
-import TopBillersSlider from './TopBillersSlider';
+// import TopBillersSlider from './TopBillersSlider';
 import HeaderSlider from './HeaderSlider';
 
 const Home = () => {

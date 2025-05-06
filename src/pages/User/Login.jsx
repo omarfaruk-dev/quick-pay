@@ -6,12 +6,24 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const Login = () => {
 
-     //from auth context
-     const { signInUser, googleSignIn, setUser } = use(AuthContext)
-     //use location for path
-     const location = useLocation();
-     //navigate / redirect to another page
-     const navigate = useNavigate()
+    //from auth context
+    const {user, signInUser, googleSignIn, setUser } = use(AuthContext)
+    //use location for path
+    const location = useLocation();
+    //navigate / redirect to another page
+    const navigate = useNavigate()
+    //handle error
+    const [error, setError] = useState('');
+    const errorMessages = {
+        "auth/invalid-credential": "Invalid email or password.",
+        "auth/user-not-found": "No account found with this email.",
+        "auth/wrong-password": "Incorrect password. Try again.",
+        "auth/invalid-email": "Please enter a valid email address.",
+        "auth/missing-password": "Please enter your password.",
+        "auth/too-many-requests": "Too many attempts. Please try again later.",
+        "auth/network-request-failed": "Network error. Check your internet connection.",
+    };
+
 
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
@@ -27,37 +39,43 @@ const Login = () => {
         //signin user
         signInUser(email, password)
             .then(result => {
-                console.log(result);
-                const currentUser=result.user;
+                const currentUser = result.user;
                 setUser(currentUser)
+                setError('');
                 alert('success')
                 navigate(`${location.state ? location.state : '/'}`)
-                
+
             })
             .catch(error => {
-                alert(error);
+                const message = errorMessages[error.code] || "An unexpected error occurred.";
+                setError(message)
             })
 
+    }
+    if(user) {
+        return navigate('/')
     }
 
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(result => {
+                setError('');
                 setUser(result.user);
                 navigate(`${location.state ? location.state : '/'}`)
                 alert('successfully login with google')
             })
             .catch(error => {
-                console.log(error);
+                const message = errorMessages[error.code] || "An unexpected error occurred.";
+                setError(message)
             })
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-r from-blue-50 to-indigo-100">
             <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-8">
                 <h2 className=" text-2xl font-bold text-blue-800 mb-6 text-center">Login to Quick Pay</h2>
                 <form onSubmit={handleLogin}
-                className="space-y-5">
+                    className="space-y-5">
                     {/* Email */}
                     <div>
                         <label className="block text-sm font-medium text-blue-800 mb-1">Email</label>
@@ -81,6 +99,7 @@ const Login = () => {
                                 placeholder="Enter your password"
                                 required
                             />
+                            {/* eye icon */}
                             <button
                                 type="button"
                                 onClick={togglePasswordVisibility}
@@ -90,8 +109,9 @@ const Login = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="flex justify-end text-xs text-purple-700 hover:text-blue-700 hover:underline">
-                        <Link to='/'>Forgot Password?</Link>
+                    {error && <p className='text-red-500'>✗ {error}</p>}
+                    <div className="flex justify-end font-semibold text-sm text-purple-700 hover:text-blue-700 hover:underline">
+                        <Link to='/reset-password'>Forgot Password?</Link>
                     </div>
                     <button
                         type="submit"
@@ -114,7 +134,7 @@ const Login = () => {
 
                     {/* Register Link */}
                     <p className="text-center text-sm text-blue-800 mt-4">
-                        Don’t have an account? <Link to="/register" className="text-blue-700 hover:underline hover:text-purple-700">Register</Link>
+                        Don’t have an account? <Link to="/register" className="font-semibold text-purple-700 hover:underline hover:text-blue-700">Register</Link>
                     </p>
                 </form>
             </div>

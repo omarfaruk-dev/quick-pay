@@ -19,7 +19,7 @@ const services = [
 
 const ServiceCarousel = () => {
     return (
-        <div className=" px-4 rounded-xl py-10" >
+        <div className=" px-4 py-10 bg-gradient-to-r from-blue-50 to-indigo-100" >
             {/* <h3 className="text-center text-lg font-semibold py-4">
         Bill Payment Services We Provide
       </h3> */}
