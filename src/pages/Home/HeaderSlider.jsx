@@ -11,9 +11,11 @@ const images = [
     'https://i.ibb.co.com/0V9GDyQ3/titas-gas.png',
     'https://i.ibb.co.com/v6cNSVVB/wasa.jpg',
     'https://i.ibb.co.com/Rkq6HZjy/link3.png',
+    'https://i.ibb.co.com/zhS0vSSV/desco.jpg',
     'https://i.ibb.co.com/6JvFTDC7/ah-college.jpg',
     'https://i.ibb.co.com/fzx0HRsy/credit-card.jpg',
-    'https://i.ibb.co.com/zh7Pyfc1/akash.jpg'
+    'https://i.ibb.co.com/zh7Pyfc1/akash.jpg',
+    'https://i.ibb.co.com/p6qV210k/amber-it.jpg',
 ];
 
 const HeaderSlider = () => {

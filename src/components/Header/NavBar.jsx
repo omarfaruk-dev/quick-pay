@@ -59,7 +59,6 @@ const NavBar = () => {
                     <ul className="hidden md:flex space-x-7 items-center">
                         {links}
                     </ul>
-
                     {
                         user ?
                             <div ref={menuRef} className="hidden relative md:inline-block text-left">
