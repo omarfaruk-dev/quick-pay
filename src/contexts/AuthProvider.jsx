@@ -8,8 +8,8 @@ const googleProvider = new GoogleAuthProvider
 
 const AuthProvider = ({ children }) => {
 
-    const [balance, setBalance] = useState(10000); // Initial balance (চাইলে database থেকে load করতে পারো)
-    const [paidBills, setPaidBills] = useState([]); // Paid bill id list
+    const [balance, setBalance] = useState(10000);
+    const [paidBills, setPaidBills] = useState([]);
 
     //share currentUser info
     const [user, setUser] = useState(null)
@@ -68,7 +68,6 @@ const AuthProvider = ({ children }) => {
     //auth state change, if user login or logout
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log(currentUser);
             setUser(currentUser);
             setLoading(false) // stop loading
         })

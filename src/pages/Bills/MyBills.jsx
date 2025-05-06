@@ -43,6 +43,7 @@ const MyBills = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+            <title>My Bills | All Bills List</title>
             <div className="w-full p-8">
                 <h2 className="text-2xl font-bold text-blue-800 mb-6 text-center">My Bills</h2>
 
@@ -74,7 +75,7 @@ const MyBills = () => {
                                     {/* Blue check if paid */}
                                     {isPaid && (
                                         <FaCheckCircle
-                                            className="absolute top-2 right-2 text-blue-500 text-xl"
+                                            className="absolute top-2 right-2 text-green-500 text-3xl"
                                             title="Bill Paid"
                                         />
                                     )}

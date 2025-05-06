@@ -90,6 +90,7 @@ const BillDetails = () => {
 
   return (
     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 min-h-[calc(100vh-361px)] flex items-center justify-center px-4 py-8 bg-white">
+      <title>Bill Payment | Details Bill</title>
       <div className="md:flex  items-center bg-white rounded-xl shadow-lg max-w-3xl w-xl overflow-hidden border border-blue-100">
         {/* Left side - Icon */}
         <div className="relative bg-white flex items-center justify-center p-4">
