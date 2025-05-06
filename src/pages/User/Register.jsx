@@ -1,13 +1,15 @@
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 // import { auth } from '../../firebase/firebase.init';
 import { AuthContext } from '../../contexts/AuthContext';
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
+    const location = useLocation()
 
-    const { createUser, setUser, updateUser } = use(AuthContext);
+    const { createUser, setUser, updateUser, googleSignIn } = use(AuthContext);
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -36,22 +38,30 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                navigate(`${location.state ? location.state : '/'}`)
                 alert('Registration Succuss!')
-                navigate('/')
                 updateUser({ displayName: name, photoURL: photo }).then(() => {
                     setUser({ ...user, displayName: name, photoURL: photo })
                 })
                     .catch(error => {
-                        alert(error);
                         setUser(user);
                     })
 
             })
             .catch(error => {
+                alert(error);
+            })
+    }
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then(result => {
+                setUser(result.user);
+                navigate(`${location.state ? location.state : '/'}`)
+                alert('successfully login with google')
+            })
+            .catch(error => {
                 console.log(error);
             })
-
-
     }
 
     return (
@@ -144,6 +154,18 @@ const Register = () => {
                     >
                         Register
                     </button>
+                    <div className="flex items-center py-3 space-x-1">
+                        <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
+                        <p className="px-3 text-sm text-blue-700">Login with social accounts</p>
+                        <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
+                    </div>
+                    {/* login with google */}
+                    <div className="flex justify-center my-4">
+                        <button onClick={handleGoogleLogin} type="button" className="flex items-center justify-center w-full py-2 space-x-4 border-2 border-blue-700 bg-white rounded-3xl focus:ring-2 focus:ring-offset-1 focus:ring-purple-700 cursor-pointer">
+                            <FcGoogle />
+                            <p> Continue with Google</p>
+                        </button>
+                    </div>
 
                     {/* Login link */}
                     <p className="text-center text-sm text-blue-800 mt-4">

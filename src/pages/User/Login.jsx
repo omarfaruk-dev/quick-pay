@@ -35,7 +35,7 @@ const Login = () => {
                 
             })
             .catch(error => {
-                console.log(error);
+                alert(error);
             })
 
     }
@@ -44,7 +44,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 setUser(result.user);
-                navigate('/')
+                navigate(`${location.state ? location.state : '/'}`)
                 alert('successfully login with google')
             })
             .catch(error => {
