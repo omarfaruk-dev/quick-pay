@@ -1,10 +1,9 @@
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router';
-// import { auth } from '../../firebase/firebase.init';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const location = useLocation()
@@ -33,24 +32,24 @@ const Register = () => {
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 navigate(`${location.state ? location.state : '/'}`)
-                alert('Registration Succuss!')
+                toast.success('Registration Succuss!')
                 updateUser({ displayName: name, photoURL: photo }).then(() => {
                     setUser({ ...user, displayName: name, photoURL: photo })
                 })
                     .catch(error => {
-                        setUser(user);
-                        console.log(error);
+                        const errorMessage = error.message;
+                        toast.error(errorMessage || 'Something went wrong!')
                     })
 
             })
             .catch(error => {
-                alert(error);
+                const errorMessage = error.message;
+                toast.error(errorMessage || 'Something went wrong!');
             })
     }
     const handleGoogleLogin = () => {
@@ -58,10 +57,11 @@ const Register = () => {
             .then(result => {
                 setUser(result.user);
                 navigate(`${location.state ? location.state : '/'}`)
-                alert('successfully login with google')
+                toast.success('successfully login with google')
             })
             .catch(error => {
-                console.log(error);
+                const errorMessage = error.message;
+                toast.error(errorMessage || 'Something went wrong!');
             })
     }
     if(user) {

@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
+import toast from 'react-hot-toast';
 
 const Login = () => {
 
@@ -42,7 +43,7 @@ const Login = () => {
                 const currentUser = result.user;
                 setUser(currentUser)
                 setError('');
-                alert('success')
+                toast.success('success')
                 navigate(`${location.state ? location.state : '/'}`)
 
             })
@@ -62,7 +63,7 @@ const Login = () => {
                 setError('');
                 setUser(result.user);
                 navigate(`${location.state ? location.state : '/'}`)
-                alert('successfully login with google')
+                toast.success('successfully login with google')
             })
             .catch(error => {
                 const message = errorMessages[error.code] || "An unexpected error occurred.";

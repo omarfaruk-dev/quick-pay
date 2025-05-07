@@ -1,9 +1,10 @@
 import { use, useEffect, useRef, useState } from 'react';
-import { FaBars, FaBookReader, FaDollarSign, FaHome, FaMoneyBillWave, FaSignOutAlt, FaTimes, FaUser } from 'react-icons/fa';
+import { FaBars, FaBookReader, FaHome, FaMoneyBillWave, FaSignOutAlt, FaTimes, FaUser } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router';
 import Button from '../ui/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { TbCoinTaka } from 'react-icons/tb';
+import toast from 'react-hot-toast';
 
 const NavBar = () => {
     const { user, signOutUser, balance } = use(AuthContext);
@@ -31,10 +32,11 @@ const NavBar = () => {
         signOutUser()
             .then(() => {
                 navigate('/')
-                alert('Log Out Successfully!')
+                toast.success('Log Out Successfully!')
             })
             .catch(error => {
-                console.log(error);
+                const errorMessage = error.message;
+                toast.error(errorMessage || 'Something went wrong!')
             })
     }
 
@@ -69,7 +71,7 @@ const NavBar = () => {
                                 >
                                     {user?.photoURL ? (
                                         <img
-                                            src={user.photoURL}
+                                            src={user?.photoURL}
                                             alt="User"
                                             className="w-12 h-12 rounded-full border-2 border-blue-700 shadow-sm"
                                         />
@@ -103,8 +105,6 @@ const NavBar = () => {
                                 <Link to="/register"><Button label={"Register"}></Button></Link>
                                 <Link to='/login'><Button label={"Login"}></Button></Link>
                             </div>
-
-
                     }
 
                     {/* Mobile menu button */}

@@ -3,6 +3,8 @@ import { useParams, useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FaBolt, FaCheck, FaFire, FaRegCreditCard, FaTv, FaUniversity, FaWifi } from 'react-icons/fa';
 import { IoWater } from 'react-icons/io5';
+import toast from 'react-hot-toast';
+import { TbArrowBackUp } from 'react-icons/tb';
 
 const getBillIcon = (type) => {
   const lowerType = type.toLowerCase();
@@ -54,25 +56,17 @@ const BillDetails = () => {
   });
 
   const handlePay = () => {
-    if (!user) {
-      alert('Please log in to pay.');
-      return;
-    }
-    if (isPaid) {
-      alert('Already Paid')
-      return;
-    }
 
     const paidBillsKey = `paidBills_${user.uid}`;
     const paidBills = JSON.parse(localStorage.getItem(paidBillsKey)) || [];
 
     if (paidBills.includes(bill.id)) {
-      alert('You have already paid this bill.');
+      toast.error('You have already paid this bill.');
       return;
     }
 
     if (balance < bill.amount) {
-      alert('Insufficient balance!');
+      toast.error('Insufficient balance!');
       return;
     }
 
@@ -84,51 +78,77 @@ const BillDetails = () => {
     localStorage.setItem(paidBillsKey, JSON.stringify(paidBills));
 
     setIsPaid(true);
-    alert('Bill paid successfully!');
-    navigate('/bills')
+    toast.success('Bill paid successfully!');
+    navigate('/bills');
   };
 
   return (
-    <div className="max-w-7xl mx-auto sm:px-4 lg:px-6 min-h-[calc(100vh-361px)] flex items-center justify-center px-2 py-8 bg-white">
+    <div className='sm:px-4 lg:px-6 min-h-[calc(100vh-400px)]'>
+      {/* Go Back Button */}
+      <div className="max-w-3xl mx-auto px-2 sm:px-4 md:px-18 xl:px-20 py-10 ">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white px-5 py-2 rounded-full font-medium hover:from-purple-700 hover:to-blue-700 transition"
+        >
+          <TbArrowBackUp size={20} /> Go Back
+        </button>
+      </div>
+
       <title>Bill Payment | Details</title>
-      <div className="md:flex  items-center bg-white rounded-xl shadow-lg max-w-3xl w-xl overflow-hidden border border-blue-100">
-        {/* Left side - Icon */}
-        <div className="relative bg-white flex items-center justify-center p-4">
-          <img src={bill.icon} alt={`${bill.bill_type} icon`} className="w-50 lg:w-60 lg:h-60 border-2 border-blue-100 rounded-xl object-contain" />
-          <div className="absolute bottom-5 right-5 bg-blue-100 p-2 rounded-lg ">
-            {getBillIcon(bill.bill_type)}
+
+      <div className=" flex items-center justify-center px-2 pb-8 bg-white">
+        <div className="md:flex items-center bg-white rounded-xl shadow-lg max-w-3xl w-xl overflow-hidden border border-blue-100">
+          {/* Left side - Icon */}
+          <div className="bg-white flex items-center justify-center p-4">
+            <div className='relative'>
+              <img
+                src={bill.icon}
+                alt={`${bill.bill_type} icon`}
+                className="w-50 lg:w-60 lg:h-60 border-2 border-blue-100 rounded-xl object-contain"
+              />
+              <div className="absolute bottom-1 right-1 bg-blue-100 p-2 rounded-lg">
+                {getBillIcon(bill.bill_type)}
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Right side - Info */}
-        <div className="text-center md:text-left p-6 space-y-2 text-blue-800">
-          <h2 className="text-xl font-bold">{bill.organization}</h2>
-          <p className="italic capitalize text-sm text-indigo-700">{bill.bill_type}</p>
-          <p className="text-sm font-medium">Amount: <span className="font-bold">{bill.amount}</span></p>
-          <p className="text-sm font-medium">Due Date: <span>{formattedDate}</span></p>
-          <p className="text-sm font-medium flex items-center gap-2">Payment Status: {isPaid ? (
-            <span className="text-green-600 font-semibold flex items-center gap-1">
-              Paid <FaCheck />
-            </span>
-          ) : (
-            <span className="text-red-600 font-semibold">Unpaid</span>
-          )}</p>
+          {/* Right side - Info */}
+          <div className="text-center md:text-left p-6 space-y-2 text-blue-800">
+            <h2 className="text-xl font-bold">{bill.organization}</h2>
+            <p className="italic capitalize text-sm text-indigo-700">{bill.bill_type}</p>
+            <p className="text-sm font-medium">
+              Amount: <span className="font-bold">{bill.amount}</span>
+            </p>
+            <p className="text-sm font-medium">
+              Due Date: <span>{formattedDate}</span>
+            </p>
+            <p className="text-sm font-medium justify-center md:justify-start flex items-center gap-2">
+              Payment Status:{' '}
+              {isPaid ? (
+                <span className="text-green-600 font-semibold flex items-center gap-1">
+                  Paid <FaCheck />
+                </span>
+              ) : (
+                <span className="text-red-600 font-semibold">Unpaid</span>
+              )}
+            </p>
 
-          {isPaid ? (
-            <button
-              onClick={handlePay}
-              className="mt-4 px-5 py-2 bg-gray-300 text-white rounded-3xl hover:from-purple-700 hover:to-blue-700 transition font-semibold"
-            >
-              Already Paid
-            </button>
-          ) : (
-            <button
-              onClick={handlePay}
-              className="mt-4 px-5 py-2 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white rounded-3xl hover:from-purple-700 hover:to-blue-700 transition font-semibold"
-            >
-              Pay Bill
-            </button>
-          )}
+            {isPaid ? (
+              <button
+                onClick={handlePay}
+                className="mt-4 px-5 py-2 bg-blue-300 text-white rounded-3xl hover:from-purple-700 hover:to-blue-700 transition font-semibold"
+              >
+                Already Paid
+              </button>
+            ) : (
+              <button
+                onClick={handlePay}
+                className="mt-4 px-5 py-2 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white rounded-3xl hover:from-purple-700 hover:to-blue-700 transition font-semibold"
+              >
+                Pay Bill
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

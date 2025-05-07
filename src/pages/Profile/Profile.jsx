@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import { FaRegEdit, FaUser } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Profile = () => {
 
@@ -28,11 +29,11 @@ const Profile = () => {
 
             user.address = editedData.address;
 
-            alert('Profile updated successfully!');
+            toast.success('Profile updated successfully!');
             setIsEditing(false);
         } catch (error) {
-            console.error('Update failed:', error);
-            alert('Failed to update profile');
+            const errorMessage = error;
+            toast.error(errorMessage);
         }
     };
 
@@ -58,7 +59,7 @@ const Profile = () => {
                 <div className="flex flex-col items-center">
                     {user?.photoURL ? (
                         <img
-                            src={editedData.photoURL}
+                            src={editedData?.photoURL}
                             alt="Profile"
                             className="w-50 h-50 rounded-full border-3 border-blue-700 shadow-md mb-4"
                         />
@@ -102,8 +103,8 @@ const Profile = () => {
                         </>
                     ) : (
                         <>
-                            <h2 className="text-2xl font-bold text-blue-800">{user.displayName}</h2>
-                            <p className="text-sm text-gray-600 mb-6">{user.email}</p>
+                            <h2 className="text-2xl font-bold text-blue-800">{user?.displayName}</h2>
+                            <p className="text-sm text-gray-600 mb-6">{user?.email}</p>
                         </>
                     )}
                 </div>
@@ -121,13 +122,12 @@ const Profile = () => {
                                 placeholder="Address"
                             />
                         ) : (
-                            <p className="text-gray-800">{user.address || 'N/A'}</p>
+                            <p className="text-gray-800">{user?.address || 'N/A'}</p>
                         )}
                     </div>
                     <div className='flex items-center gap-2'>
                         <p className="text-sm text-blue-700 font-semibold">Member Since: </p>
                         <p className="text-sm text-gray-800"> {formattedJoinDate}</p>
-                        {/* <p className="text-gray-800">{user.metadata.creationTime}</p> */}
                     </div>
                 </div>
 
