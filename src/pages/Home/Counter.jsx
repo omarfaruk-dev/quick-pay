@@ -1,50 +1,53 @@
-import { FaUser, FaMedal, FaTools, FaHeart } from "react-icons/fa";
-import CountUp from "react-countup";
+import React from 'react';
+import CountUp from 'react-countup';
+import { FaRegSmileBeam, FaFileInvoiceDollar, FaHandshake, FaMobileAlt } from 'react-icons/fa';
 
 const stats = [
   {
-    icon: <FaUser className="text-4xl text-purple-600" />,
-    count: 7000,
-    label: "Active Subscriptions",
+    title: 'Happy Users',
+    end: 120000,
+    suffix: '+',
+    icon: <FaRegSmileBeam className="text-green-600 text-5xl mb-4" />,
   },
   {
-    icon: <FaMedal className="text-4xl text-yellow-500" />,
-    count: 52802,
-    label: "5-Star Reviews",
+    title: 'Bills Paid',
+    end: 950000,
+    suffix: '+',
+    icon: <FaFileInvoiceDollar className="text-blue-700 text-5xl mb-4" />,
   },
   {
-    icon: <FaTools className="text-4xl text-green-500" />,
-    count: 21000,
-    label: "Tools Supported",
+    title: 'Partner Services',
+    end: 39,
+    suffix: '+',
+    icon: <FaHandshake className="text-purple-700 text-5xl mb-4" />,
   },
   {
-    icon: <FaHeart className="text-4xl text-pink-500" />,
-    count: 102098,
-    label: "Happy Users",
+    title: 'App Downloads',
+    end: 30000,
+    suffix: '+',
+    icon: <FaMobileAlt className="text-yellow-500 text-5xl mb-4" />,
   },
 ];
 
 const Counter = () => {
   return (
-    <section className="py-16 bg-gradient-to-r from-[#f5f7ff] to-[#f5f7ff] text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-purple-700 mb-2">
-        We Power Modern Subscriptions
-      </h2>
-      <p className="text-gray-600 mb-10">
-        Trusted by tech users and developers worldwide. We simplify how you manage your tools.
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-6">
-        {stats.map((item, index) => (
-          <div key={index} className="bg-white shadow-md rounded-lg p-6">
-            <div className="flex justify-center mb-4">{item.icon}</div>
-            <h3 className="text-3xl font-bold text-gray-800">
-              <CountUp end={item.count} duration={2} separator="," />+
+    <div className="bg-gradient-to-br from-[#fdfdfd] via-[#f9f9fb] to-[#f1f5f9] py-16 px-6 md:px-12">
+      <h2 className="text-xl lg:text-3xl font-bold text-center text-gray-800 mb-12">Our Impact in Numbers</h2>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map((stat, index) => (
+          <div
+            key={index}
+            className="bg-white h-72 rounded-2xl shadow-md p-6 flex flex-col items-center justify-center text-center hover:shadow-lg transition-all duration-300"
+          >
+            {stat.icon}
+            <h3 className="text-3xl font-bold text-gray-800 mt-2">
+              <CountUp enableScrollSpy end={stat.end} duration={3} separator="," suffix={stat.suffix} />
             </h3>
-            <p className="text-gray-500 mt-2">{item.label}</p>
+            <p className="text-sm text-gray-600 mt-2">{stat.title}</p>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

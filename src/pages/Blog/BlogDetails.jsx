@@ -15,13 +15,13 @@ const BlogDetails = () => {
             </div>
         );
     }
-    const handleGoBack = ()=>{
+    const handleGoBack = () => {
         navigate(-1)
     }
 
     return (
         <div className="max-w-4xl mx-auto py-12 px-4">
-            <button onClick={handleGoBack} className='cursor-pointer flex items-center gap-2 text-xl rounded-3xl border-2 border-blue-700 px-4 py-2 mb-5 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:bg-gradient-to-l hover:from-blue-700 hover:via-indigo-600 hover:to-purple-700 text-white'><TbArrowBackUpDouble /> Go Back</button>
+            <button onClick={handleGoBack} className='cursor-pointer flex items-center gap-2 text-xl rounded-3xl border-2 border-blue-700 px-4 py-1 mb-5 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:bg-gradient-to-l hover:from-blue-700 hover:via-indigo-600 hover:to-purple-700 text-white'><TbArrowBackUpDouble /> Go Back</button>
             <img
                 src={blog.img}
                 alt={blog.title}
@@ -30,6 +30,9 @@ const BlogDetails = () => {
             <p className="text-sm text-purple-600 font-medium uppercase mb-2">{blog.category}</p>
             <h1 className="text-4xl font-bold text-blue-900 mb-6">{blog.title}</h1>
             <p className="text-gray-700 leading-7 whitespace-pre-line">{blog.content}</p>
+            <div className='flex items-center justify-center mt-10'>
+                <button onClick={handleGoBack} className=' cursor-pointer flex items-center gap-2 text-xl rounded-3xl border-2 border-blue-700 px-4 py-1 mb-5 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:bg-gradient-to-l hover:from-blue-700 hover:via-indigo-600 hover:to-purple-700 text-white'> View All Post</button>
+            </div>
         </div>
     );
 };

@@ -5,21 +5,27 @@ import MultiPlatformSupport from './MultiPlatformSupport';
 // import TopBillersSlider from './TopBillersSlider';
 import HeaderSlider from './HeaderSlider';
 import Counter from './Counter';
+import LatestBlogs from './LatestBlogs';
 
 const Home = () => {
     return (
         <main>
-            <HeaderSlider/>
-            {/* <TopBillersSlider/> */}
-
+            <HeaderSlider />
+            <section>
+                <WhyChooseUs />
+            </section>
             <section>
                 <MultiPlatformSupport />
             </section>
+            <section>
             <ServiceCarousel />
-            <div>
-                <WhyChooseUs />
-                <Counter/>
-            </div>
+            </section>
+            <section>
+                <LatestBlogs/>
+            </section>
+            <section>
+                <Counter />
+            </section>
 
         </main>
     );
