@@ -73,6 +73,11 @@ npm install tailwindcss @tailwindcss/vite
 ```bash
 npm i firebase
 ```
+5. **Install SwiperJS:**
+
+```bash
+npm i swiper
+```
 
 6. **Install Toast & Additional Packages:**
 

@@ -6,13 +6,19 @@ import MultiPlatformSupport from './MultiPlatformSupport';
 import HeaderSlider from './HeaderSlider';
 import Counter from './Counter';
 import LatestBlogs from './LatestBlogs';
+import WhyUs from './WhyUs';
+// import WhyUs from './WhyUs';
 
 const Home = () => {
     return (
         <main>
             <HeaderSlider />
             <section>
-                <WhyChooseUs />
+                <WhyUs/>
+                {/* <WhyUs/> */}
+            </section>
+            <section>
+                {/* <WhyChooseUs /> */}
             </section>
             <section>
                 <MultiPlatformSupport />

@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <hr className="my-6 border-blue-600" />
+                <hr className="my-6 border-white" />
 
                 <div className="text-center text-sm text-white">
                     &copy; {new Date().getFullYear()} Quick Pay. All rights reserved.

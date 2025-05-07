@@ -55,7 +55,7 @@ const NavBar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex items-center">
-                        <span className="flex items-center gap-1 text-2xl font-bold text-yellow-300"><MdElectricBolt size={30} color='#ffffff'/> Quick Pay</span>
+                    <Link to='/'><span className="flex items-center gap-1 text-2xl font-bold text-yellow-300"><MdElectricBolt size={30} color='#ffffff'/> Quick Pay</span></Link>  
                     </div>
 
                     {/* Desktop Menu */}
