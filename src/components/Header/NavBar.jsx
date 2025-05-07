@@ -43,10 +43,10 @@ const NavBar = () => {
 
     const links =
         <>
-            <li><NavLink to='/' className="text-lg hover:text-yellow-300 transition flex items-center"><FaHome className="mr-2" /> Home</NavLink></li>
-            <li><NavLink to='/bills' className="text-lg hover:text-yellow-300 transition flex items-center" ><FaMoneyBillWave className="mr-2" /> Bills</NavLink></li>
-            <li><NavLink to='/profile' className="text-lg hover:text-yellow-300 transition flex items-center"><FaUser className="mr-2" />My Profile</NavLink></li>
-            <li><NavLink to='/blog' className="text-lg hover:text-yellow-300 transition flex items-center" ><FaBookReader className='mr-2' /> Blog</NavLink></li>
+            <li><NavLink to='/' className="text-lg hover:text-yellow-400 transition flex items-center"><FaHome className="mr-2" /> Home</NavLink></li>
+            <li><NavLink to='/bills' className="text-lg hover:text-yellow-400 transition flex items-center" ><FaMoneyBillWave className="mr-2" /> Bills</NavLink></li>
+            <li><NavLink to='/profile' className="text-lg hover:text-yellow-400 transition flex items-center"><FaUser className="mr-2" />My Profile</NavLink></li>
+            <li><NavLink to='/blog' className="text-lg hover:text-yellow-400 transition flex items-center" ><FaBookReader className='mr-2' /> Blog</NavLink></li>
         </>
 
     return (
@@ -55,7 +55,7 @@ const NavBar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex items-center">
-                    <Link to='/'><span className="flex items-center gap-1 text-2xl font-bold text-yellow-300"><MdElectricBolt size={30} color='#ffffff'/> Quick Pay</span></Link>  
+                    <Link to='/'><span className="flex items-center gap-1 text-2xl font-bold text-yellow-400"><MdElectricBolt size={30} color='#ffffff'/> Quick Pay</span></Link>  
                     </div>
 
                     {/* Desktop Menu */}

@@ -57,18 +57,49 @@ const BillDetails = () => {
     year: 'numeric',
   });
 
+  // const handlePay = () => {
+
+  //   if (!selectedMethod) {
+  //     toast.error('Please select a bank account to make the payment.');
+  //     return;
+  //   }
+
+  //   const paidBillsKey = `paidBills_${user.uid}`;
+  //   const paidBills = JSON.parse(localStorage.getItem(paidBillsKey)) || [];
+
+  //   if (paidBills.includes(bill.id)) {
+  //     toast.error('You have already paid this bill.');
+  //     return;
+  //   }
+
+  //   if (balance < bill.amount) {
+  //     toast.error('Insufficient balance!');
+  //     return;
+  //   }
+
+  //   // Deduct balance
+  //   setBalance(prev => prev - bill.amount);
+
+  //   // Store paid bill ID
+  //   paidBills.push(bill.id);
+  //   localStorage.setItem(paidBillsKey, JSON.stringify(paidBills));
+
+  //   setIsPaid(true);
+  //   toast.success('Bill paid successfully!');
+  //   navigate('/bills');
+  // };
+
   const handlePay = () => {
-
-    if (!selectedMethod) {
-      toast.error('Please select a bank account to make the payment.');
-      return;
-    }
-
     const paidBillsKey = `paidBills_${user.uid}`;
     const paidBills = JSON.parse(localStorage.getItem(paidBillsKey)) || [];
 
     if (paidBills.includes(bill.id)) {
-      toast.error('You have already paid this bill.');
+      toast.error('This Bill is Already Paid.');
+      return;
+    }
+
+    if (!selectedMethod) {
+      toast.error('Please select a bank account to make the payment.');
       return;
     }
 
@@ -104,14 +135,14 @@ const BillDetails = () => {
       <title>Bill Payment | Details</title>
 
       <div className=" flex items-center justify-center px-2 pb-8 bg-white">
-        <div className="md:flex items-center bg-white rounded-xl shadow-lg max-w-3xl w-xl overflow-hidden border border-blue-100">
+        <div className="md:flex items-center bg-white rounded-xl shadow-lg max-w-3xl w-2xl overflow-hidden border border-blue-100">
           {/* Left side - Icon */}
           <div className="bg-white flex items-center justify-center p-4">
             <div className='relative'>
               <img
                 src={bill.icon}
                 alt={`${bill.bill_type} icon`}
-                className="w-50 lg:w-60 lg:h-60 border-2 border-blue-100 rounded-xl object-contain"
+                className="w-50 md:w-65 lg:w-70 lg:h-70 border-2 border-blue-100 rounded-xl object-contain"
               />
               <div className="absolute bottom-1 right-1 bg-blue-100 p-2 rounded-lg">
                 {getBillIcon(bill.bill_type)}
