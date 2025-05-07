@@ -48,13 +48,13 @@ const MultiPlatformSupport = () => {
     const { title, description, img, buttons } = tabData[activeTab];
 
     return (
-        <div className="bg-[#f5f7fa] py-16">
+        <div className="py-12 lg:py-26">
             <div className="max-w-7xl mx-auto px-4">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
                     Access Quick Pay Anywhere
                 </h2>
 
-                <div className="flex justify-center mb-8">
+                <div className=" flex justify-center mb-8">
                     <div className="flex rounded-full shadow border border-blue-700 overflow-hidden bg-white">
                         {tabs.map((tab) => (
                             <button
@@ -71,7 +71,7 @@ const MultiPlatformSupport = () => {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row items-center gap-10 transition-all">
+                <div className=" border-2 border-blue-50 rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row items-center gap-10 transition-all">
                     <div className="md:w-1/2">
                         <img src={img} alt={title} className="bg-gradient-to-b from-blue-100 via-indigo-100 to-purple-100 rounded-xl w-full shadow-md" />
                     </div>

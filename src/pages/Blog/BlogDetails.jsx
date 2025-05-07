@@ -1,6 +1,6 @@
 import React from 'react';
 import { TbArrowBackUpDouble } from 'react-icons/tb';
-import { useParams, useLoaderData, useNavigate } from 'react-router';
+import { useParams, useLoaderData, useNavigate, Link } from 'react-router';
 
 const BlogDetails = () => {
     const navigate = useNavigate()
@@ -32,7 +32,9 @@ const BlogDetails = () => {
             <h1 className="text-4xl font-bold text-blue-900 mb-6">{blog.title}</h1>
             <p className="text-gray-700 leading-7 whitespace-pre-line">{blog.content}</p>
             <div className='flex items-center justify-center mt-10'>
-                <button onClick={handleGoBack} className=' cursor-pointer flex items-center gap-2 text-xl rounded-3xl border-2 border-blue-700 px-4 py-1 mb-5 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:bg-gradient-to-l hover:from-blue-700 hover:via-indigo-600 hover:to-purple-700 text-white'> View All Post</button>
+                <Link to='/blog'>
+                    <button className=' cursor-pointer flex items-center gap-2 text-xl rounded-3xl border-2 border-blue-700 px-4 py-1 mb-5 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:bg-gradient-to-l hover:from-blue-700 hover:via-indigo-600 hover:to-purple-700 text-white'> View All Post</button>
+                </Link>
             </div>
         </div>
     );

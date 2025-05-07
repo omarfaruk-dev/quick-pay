@@ -21,7 +21,7 @@ const images = [
 const HeaderSlider = () => {
     return (
 
-        <div className=" w-full mx-auto py-25 md:px-20 bg-gradient-to-r from-blue-50 to-indigo-100">
+        <div className=" w-full mx-auto py-25 md:px-20 bg-gradient-to-r from-blue-50 to-purple-100">
             <Swiper
                 effect="coverflow"
                 grabCursor={true}

@@ -13,3 +13,7 @@
 nav .active{
   color: #FFDF20;
 }
+
+html {
+  scroll-behavior: smooth;
+}

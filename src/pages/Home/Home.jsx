@@ -1,33 +1,30 @@
 import React from 'react';
 import ServiceCarousel from './ServiceCarousel';
-import WhyChooseUs from './WhyChooseUs';
 import MultiPlatformSupport from './MultiPlatformSupport';
-// import TopBillersSlider from './TopBillersSlider';
 import HeaderSlider from './HeaderSlider';
 import Counter from './Counter';
 import LatestBlogs from './LatestBlogs';
 import WhyUs from './WhyUs';
-// import WhyUs from './WhyUs';
+import OurPartners from './OurPartners';
 
 const Home = () => {
     return (
         <main>
             <HeaderSlider />
             <section>
-                <WhyUs/>
-                {/* <WhyUs/> */}
+                <OurPartners />
+                <WhyUs />
             </section>
             <section>
-                {/* <WhyChooseUs /> */}
             </section>
             <section>
                 <MultiPlatformSupport />
             </section>
             <section>
-            <ServiceCarousel />
+                <ServiceCarousel />
             </section>
             <section>
-                <LatestBlogs/>
+                <LatestBlogs />
             </section>
             <section>
                 <Counter />

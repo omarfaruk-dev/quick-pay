@@ -37,6 +37,8 @@ const BillDetails = () => {
 
   const bill = bills.find(b => b.id === parseInt(id));
   const [isPaid, setIsPaid] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState('');
+
 
   useEffect(() => {
     if (user && bill) {
@@ -56,6 +58,11 @@ const BillDetails = () => {
   });
 
   const handlePay = () => {
+
+    if (!selectedMethod) {
+      toast.error('Please select a bank account to make the payment.');
+      return;
+    }
 
     const paidBillsKey = `paidBills_${user.uid}`;
     const paidBills = JSON.parse(localStorage.getItem(paidBillsKey)) || [];
@@ -132,6 +139,24 @@ const BillDetails = () => {
                 <span className="text-red-600 font-semibold">Unpaid</span>
               )}
             </p>
+            {/* select payment method */}
+            {!isPaid && (
+              <div className="mt-2">
+                <select
+                  value={selectedMethod}
+                  onChange={(e) => setSelectedMethod(e.target.value)}
+                  className="w-full px-4 py-2 border-2 border-blue-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
+                >
+                  <option value="">-- Select A Bank --</option>
+                  <option value="bKash">bKash</option>
+                  <option value="Nagad">Nagad</option>
+                  <option value="Rocket">Rocket</option>
+                  <option value="Mcash">Mcash</option>
+                  <option value="Upay">Upay</option>
+                  <option value="Visa Card">Visa Card</option>
+                </select>
+              </div>
+            )}
 
             {isPaid ? (
               <button
@@ -149,6 +174,7 @@ const BillDetails = () => {
               </button>
             )}
           </div>
+
         </div>
       </div>
     </div>

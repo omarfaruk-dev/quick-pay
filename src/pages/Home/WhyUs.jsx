@@ -34,8 +34,8 @@ const features = [
 
 const WhyUs = () => {
   return (
-    <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch gap-12 lg:gap-8">
+    <section className="bg-gradient-to-r from-blue-50 to-purple-50 py-12 lg:py-26 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-4 lg:px-8 flex flex-col lg:flex-row items-center lg:items-stretch gap-12 lg:gap-8">
         
         <div className="w-full lg:w-5/12 xl:w-4/12 flex-shrink-0 flex justify-center lg:justify-end">
           <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[360px] md:h-[360px] lg:w-[380px] lg:h-[380px]">
@@ -56,7 +56,7 @@ const WhyUs = () => {
                             bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 text-white
                             rounded-full flex items-center justify-center text-center shadow-xl z-10`}>
               <div className="font-bold text-lg sm:text-xl md:text-2xl leading-tight">
-                WHY<br />CHOOSE<br />US
+                WHY<br />CHOOSE<br />US ?
               </div>
             </div>
           </div>

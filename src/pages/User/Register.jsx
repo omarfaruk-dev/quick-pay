@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import toast from 'react-hot-toast';
+import Loading from '../../components/ui/Loading';
 
 const Register = () => {
     const location = useLocation()
@@ -65,7 +66,10 @@ const Register = () => {
             })
     }
     if(user) {
-        return navigate('/')
+        return <>
+        <Loading/>
+        {navigate('/')}
+        </>
     }
 
     return (

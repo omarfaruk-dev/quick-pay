@@ -47,7 +47,7 @@ const BlogPage = () => {
           <img
             src={featured.img}
             alt={featured.title}
-            className="w-full md:w-1/2 h-72 object-cover rounded-xl shadow"
+            className="w-full md:w-1/2 h-72 object-cover rounded-xl shadow transition-all duration-500 ease-in-out hover:grayscale hover:scale-105"
           />
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-3 text-blue-800">{featured.title}</h2>
@@ -72,7 +72,7 @@ const BlogPage = () => {
             <img
               src={blog.img}
               alt={blog.title}
-              className="h-48 w-full object-cover rounded-md mb-4"
+              className="h-48 w-full object-cover rounded-md mb-4 transition-all duration-500 ease-in-out hover:grayscale hover:scale-105"
             />
             <h3 className="text-xl font-semibold text-blue-800 mb-2">{blog.title}</h3>
             <p className="text-gray-600 flex-grow">{blog.summary}</p>

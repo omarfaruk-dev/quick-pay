@@ -1,14 +1,15 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
+import Loading from '../../components/ui/Loading';
 
 const Login = () => {
 
     //from auth context
-    const {user, signInUser, googleSignIn, setUser } = use(AuthContext)
+    const { user, signInUser, googleSignIn, setUser } = use(AuthContext)
     //use location for path
     const location = useLocation();
     //navigate / redirect to another page
@@ -31,6 +32,15 @@ const Login = () => {
         setShowPassword(!showPassword)
     };
 
+    //if user already logged in
+    if (user) {
+        return <>
+            <Loading/>
+            {navigate(`${location.state ? location.state : '/'}`)}
+        </>
+        // <Navigate to='/'/>
+    }
+
     const handleLogin = (e) => {
         e.preventDefault();
 
@@ -45,6 +55,7 @@ const Login = () => {
                 setError('');
                 toast.success('success')
                 navigate(`${location.state ? location.state : '/'}`)
+                console.log(location.state);
 
             })
             .catch(error => {
@@ -52,9 +63,6 @@ const Login = () => {
                 setError(message)
             })
 
-    }
-    if(user) {
-        return navigate('/')
     }
 
     const handleGoogleLogin = () => {
