@@ -87,7 +87,7 @@ const BillDetails = () => {
       {/* Go Back Button */}
       <div className="max-w-3xl mx-auto px-2 sm:px-4 md:px-18 xl:px-20 py-10 ">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/bills')}
           className="flex items-center gap-2 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white px-5 py-2 rounded-full font-medium hover:from-purple-700 hover:to-blue-700 transition"
         >
           <TbArrowBackUp size={20} /> Go Back

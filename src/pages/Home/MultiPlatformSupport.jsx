@@ -9,7 +9,7 @@ const MultiPlatformSupport = () => {
             title: 'Quick Pay Mobile App',
             description:
                 'Manage your bills, send money, and track transactions all from our powerful mobile app — available on Android and iOS.',
-            img: 'https://www.bkash.com/images/04_Available-on-Multiple-Platforms_web.webp',
+            img: 'https://i.ibb.co.com/VWsPXwSp/mobile.png',
             buttons: (
                 <div className="flex gap-4 mt-4">
                     <button className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-900 transition">
@@ -27,14 +27,14 @@ const MultiPlatformSupport = () => {
             title: 'Quick Pay From Tablet',
             description:
                 'Login to our secure web portal using your tablet to make payments, manage your account, and view reports — all from your browser.',
-            img: 'https://www.bkash.com/images/04_Available-on-Multiple-Platforms_web.webp',
+            img: 'https://i.ibb.co.com/spgTGgVK/tablet.png',
             buttons: null,
         },
         web: {
-            title: 'Quick Pay Web Platform',
+            title: 'Quick Pay Desktop / Laptop Platform',
             description:
                 'Login to our secure web portal to make payments, manage your account, and view reports — all from your browser.',
-            img: 'https://www.bkash.com/images/04_Available-on-Multiple-Platforms_web.webp',
+            img: 'https://i.ibb.co.com/XZKr8k7y/laptop.png',
             buttons: null,
         },
     };
@@ -73,7 +73,7 @@ const MultiPlatformSupport = () => {
 
                 <div className="bg-white rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row items-center gap-10 transition-all">
                     <div className="md:w-1/2">
-                        <img src={img} alt={title} className="rounded-xl w-full shadow-md" />
+                        <img src={img} alt={title} className="bg-gradient-to-b from-blue-100 via-indigo-100 to-purple-100 rounded-xl w-full shadow-md" />
                     </div>
                     <div className="md:w-1/2">
                         <h3 className="text-2xl font-semibold text-gray-800 mb-4">{title}</h3>
