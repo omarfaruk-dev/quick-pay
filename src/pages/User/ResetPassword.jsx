@@ -36,7 +36,7 @@ const ResetPassword = () => {
     return (
         <div className="min-h-screen bg-blue-50 flex items-center justify-center px-4">
             <title>Forgot Password | Quick Pay</title>
-            <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl">
+            <div className="max-w-md w-full bg-white p-8 my-10 rounded-2xl shadow-xl">
                 <h2 className="text-2xl font-bold mb-6 text-center text-blue-800">Reset Password</h2>
                 <form onSubmit={handleSubmit}>
                     <label className="block mb-2 text-sm text-blue-700 font-medium">Email</label>

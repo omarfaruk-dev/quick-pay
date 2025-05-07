@@ -21,6 +21,7 @@ const BlogDetails = () => {
 
     return (
         <div className="max-w-4xl mx-auto py-12 px-4">
+            <title>{blog.title}</title>
             <button onClick={handleGoBack} className='cursor-pointer flex items-center gap-2 text-xl rounded-3xl border-2 border-blue-700 px-4 py-1 mb-5 bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 hover:bg-gradient-to-l hover:from-blue-700 hover:via-indigo-600 hover:to-purple-700 text-white'><TbArrowBackUpDouble /> Go Back</button>
             <img
                 src={blog.img}

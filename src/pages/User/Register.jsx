@@ -69,7 +69,7 @@ const Register = () => {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-r from-blue-50 to-indigo-100">
+        <div className="py-10 min-h-screen flex items-center justify-center px-4 bg-gradient-to-r from-blue-50 to-indigo-100">
             <title>Registration for new customer</title>
             <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-8">
                 <h2 className="text-2xl font-bold text-blue-800 mb-6 text-center">Register for Quick Pay</h2>

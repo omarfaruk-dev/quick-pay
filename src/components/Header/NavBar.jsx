@@ -5,6 +5,7 @@ import Button from '../ui/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { TbCoinTaka } from 'react-icons/tb';
 import toast from 'react-hot-toast';
+import { MdElectricBolt } from 'react-icons/md';
 
 const NavBar = () => {
     const { user, signOutUser, balance } = use(AuthContext);
@@ -50,15 +51,15 @@ const NavBar = () => {
 
     return (
         <nav className="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white shadow-md">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 md:px-4 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
-                    <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-yellow-300">⚡ Quick Pay</span>
+                    <div className="flex items-center">
+                        <span className="flex items-center gap-1 text-2xl font-bold text-yellow-300"><MdElectricBolt size={30} color='#ffffff'/> Quick Pay</span>
                     </div>
 
                     {/* Desktop Menu */}
-                    <ul className="hidden md:flex space-x-7 items-center">
+                    <ul className="hidden md:flex space-x-4 lg:space-x-7 items-center">
                         {links}
                     </ul>
                     {
