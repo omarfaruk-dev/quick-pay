@@ -35,7 +35,7 @@ const Login = () => {
     //if user already logged in
     if (user) {
         return <>
-            <Loading/>
+            <Loading />
             {navigate(`${location.state ? location.state : '/'}`)}
         </>
         // <Navigate to='/'/>
@@ -53,7 +53,7 @@ const Login = () => {
                 const currentUser = result.user;
                 setUser(currentUser)
                 setError('');
-                toast.success('success')
+                toast.success(`Welcome Back ${currentUser?.displayName}`)
                 navigate(`${location.state ? location.state : '/'}`)
                 console.log(location.state);
 

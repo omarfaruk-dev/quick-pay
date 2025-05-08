@@ -74,10 +74,10 @@ const NavBar = () => {
                                         <img
                                             src={user?.photoURL}
                                             alt="User"
-                                            className="w-12 h-12 rounded-full border-2 border-blue-700 shadow-sm"
+                                            className="w-12 h-12 rounded-full border-2 border-white shadow-sm"
                                         />
                                     ) : (
-                                        <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-blue-700 shadow-sm bg-gray-100 text-blue-700">
+                                        <div className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white shadow-sm bg-gray-200 text-blue-700">
                                             <FaUser className="text-xl" />
                                         </div>
                                     )}
@@ -126,7 +126,7 @@ const NavBar = () => {
                             <div className="border-t mt-5 pt-2">
                                 <h3
                                     className="flex items-center gap-2 text-lg py-2 text-white hover:bg-blue-50"
-                                >   {user ? <img src={user?.photoURL} className='w-10 h-10 rounded-full border-2 border-white' /> : <FaUser />}
+                                >   {user ? <img src={user?.photoURL} className='w-10 h-10 rounded-full border-2 border-white' /> : <FaUser/>}
                                     {user?.displayName}
                                 </h3>
                                 <h3 className="text-lg text-white flex items-center justify-left gap-2"><TbCoinTaka size={25} /> Balance: <span className="font-bold text-yellow-400"> {balance} BDT</span></h3>

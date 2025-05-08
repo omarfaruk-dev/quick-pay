@@ -65,7 +65,7 @@ const Profile = () => {
                         />
                     ) : (
                         <div className="w-50 h-50 flex items-center justify-center rounded-full border-3 border-blue-700 shadow-sm bg-gray-100 text-blue-700">
-                            <FaUser className="text-xl" />
+                            <FaUser className="text-8xl" />
                         </div>
                     )}
                     {isEditing ? (
@@ -152,7 +152,7 @@ const Profile = () => {
                             onClick={() => setIsEditing(true)}
                             className="cursor-pointer flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-700 text-white font-semibold hover:from-purple-700 hover:to-blue-700 transition"
                         >
-                            Edit Profile <FaRegEdit size={20}/>
+                            Edit Profile <FaRegEdit size={20} />
                         </button>
                     )}
                 </div>

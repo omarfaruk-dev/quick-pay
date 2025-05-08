@@ -29,30 +29,42 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+    
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-
+    
+        const isValid = {
+            length: password.length >= 6,
+            lowerUpper: /(?=.*[a-z])(?=.*[A-Z])/.test(password),
+            numberOrSymbol: /(?=.*[0-9])|(?=.*[^A-Za-z0-9])/.test(password),
+            emailNotIncluded: !password.includes(email.split('@')[0]),
+        };
+    
+        if (!Object.values(isValid).every(Boolean)) {
+            toast.error('Please meet all password requirements.');
+            setShowValidation(true); // force the UI to show validation
+            return;
+        }
+    
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                navigate(`${location.state ? location.state : '/'}`)
-                toast.success('Registration Succuss!')
+                navigate(location.state || '/');
+                toast.success('Registration Success!');
                 updateUser({ displayName: name, photoURL: photo }).then(() => {
-                    setUser({ ...user, displayName: name, photoURL: photo })
-                })
-                    .catch(error => {
-                        const errorMessage = error.message;
-                        toast.error(errorMessage || 'Something went wrong!')
-                    })
-
+                    setUser({ ...user, displayName: name, photoURL: photo });
+                }).catch(error => {
+                    toast.error(error.message || 'Something went wrong!');
+                });
             })
             .catch(error => {
-                const errorMessage = error.message;
-                toast.error(errorMessage || 'Something went wrong!');
-            })
-    }
+                toast.error(error.message || 'Something went wrong!');
+            });
+    };
+    
+
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(result => {
