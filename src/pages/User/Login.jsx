@@ -1,7 +1,7 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 import Loading from '../../components/ui/Loading';

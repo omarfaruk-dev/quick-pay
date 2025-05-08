@@ -27,6 +27,15 @@ const Register = () => {
         emailNotIncluded: !password.includes(email.split('@')[0]),
     };
 
+    // email validation 
+    const emailErrorMessages = {
+        "auth/invalid-email": "Please enter a valid email address.",
+        "auth/email-already-in-use": "This email is already registered. Please use a different one or log in instead.",
+        "auth/user-not-found": "No account found with this email.",
+        "auth/missing-email": "Please provide your email address.",
+      };
+      
+
     const handleSubmit = (e) => {
         e.preventDefault();
     
@@ -60,7 +69,7 @@ const Register = () => {
                 });
             })
             .catch(error => {
-                toast.error(error.message || 'Something went wrong!');
+                toast.error(emailErrorMessages[error.code] || 'Something went wrong!');
             });
     };
     
