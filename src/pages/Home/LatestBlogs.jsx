@@ -20,7 +20,7 @@ const LatestBlogs = () => {
         {latestBlogs.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white h-[460px] rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
           >
             <img src={blog.img} alt={blog.title} className="w-full h-48 object-cover transition-all duration-500 ease-in-out hover:grayscale hover:scale-105" />
             <div className="p-5 flex-1 flex flex-col justify-between">
@@ -31,7 +31,7 @@ const LatestBlogs = () => {
               </div>
               <Link
                 to={`/blog/${blog.id}`}
-                className="mt-4 inline-block text-blue-700 font-semibold hover:underline"
+                className="mt-4 inline-block text-blue-700 font-semibold hover:text-purple-700 hover:underline"
               >
                 Read More ...
               </Link>
