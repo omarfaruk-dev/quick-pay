@@ -92,7 +92,7 @@ const BillDetails = () => {
 
   return (
     <div className='sm:px-4 lg:px-6 min-h-[calc(100vh-400px)]'>
-      <title>Quick Pay | Your Bill</title>
+      <title>Quick Pay | Your Bill </title>
       {/* Go Back Button */}
       <div className="max-w-3xl mx-auto px-2 sm:px-4 md:px-18 xl:px-20 py-10 ">
         <button
