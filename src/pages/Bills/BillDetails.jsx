@@ -57,37 +57,7 @@ const BillDetails = () => {
     year: 'numeric',
   });
 
-  // const handlePay = () => {
 
-  //   if (!selectedMethod) {
-  //     toast.error('Please select a bank account to make the payment.');
-  //     return;
-  //   }
-
-  //   const paidBillsKey = `paidBills_${user.uid}`;
-  //   const paidBills = JSON.parse(localStorage.getItem(paidBillsKey)) || [];
-
-  //   if (paidBills.includes(bill.id)) {
-  //     toast.error('You have already paid this bill.');
-  //     return;
-  //   }
-
-  //   if (balance < bill.amount) {
-  //     toast.error('Insufficient balance!');
-  //     return;
-  //   }
-
-  //   // Deduct balance
-  //   setBalance(prev => prev - bill.amount);
-
-  //   // Store paid bill ID
-  //   paidBills.push(bill.id);
-  //   localStorage.setItem(paidBillsKey, JSON.stringify(paidBills));
-
-  //   setIsPaid(true);
-  //   toast.success('Bill paid successfully!');
-  //   navigate('/bills');
-  // };
 
   const handlePay = () => {
     const paidBillsKey = `paidBills_${user.uid}`;
@@ -122,6 +92,7 @@ const BillDetails = () => {
 
   return (
     <div className='sm:px-4 lg:px-6 min-h-[calc(100vh-400px)]'>
+      <title>Quick Pay | Your Bill</title>
       {/* Go Back Button */}
       <div className="max-w-3xl mx-auto px-2 sm:px-4 md:px-18 xl:px-20 py-10 ">
         <button
