@@ -47,7 +47,7 @@ Node.js and npm installed on your system
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/programming-hero-web-course1/b11a9-react-authentication-omarfaruk-dev
+git clone https://github.com/omarfaruk-dev/quick-pay.git
 ```
 
 2. **Install dependencies:**
