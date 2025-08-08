@@ -5,7 +5,7 @@ Quick Pay is a modern and secure utility bill payment platform that enables user
 
 🔗 **Live URL:** [https://quick-pay-bd.netlify.app](https://quick-pay-bd.netlify.app)
 
-🖼️ **Preview:** ![Quick Pay Preview](https://i.ibb.co.com/7tVdwh6x/quick-pay-mockup.jpg)
+🖼️ **Preview:** ![Quick Pay Preview](https://i.postimg.cc/K8PN74v7/quick-pay.jpg)
 
 ---
 
